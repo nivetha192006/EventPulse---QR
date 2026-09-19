@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EventPulse QR Generator</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 40px;
+        }
+
+        input {
+            width: 300px;
+            padding: 12px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 12px 25px;
+            cursor: pointer;
+        }
+
+        #qrcode {
+            margin: 30px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>EventPulse QR Code</h2>
+
+    <input
+        type="text"
+        id="link"
+        placeholder="Paste your page link here"
+    >
+
+    <br>
+
+    <button onclick="generateQR()">
+        Generate QR
+    </button>
+
+    <div id="qrcode"></div>
+
+    <script>
+        function generateQR() {
+
+            const link = document.getElementById("link").value.trim();
+
+            if (link === "") {
+                alert("https://engine-health-dash.preview.emergentagent.com/?utm_source=share");
+                return;
+            }
+
+            document.getElementById("qrcode").innerHTML = "";
+
+            new QRCode(document.getElementById("qrcode"), {
+                text: link,
+                width: 250,
+                height: 250
+            });
+        }
+    </script>
+
+</body>
+</html>
